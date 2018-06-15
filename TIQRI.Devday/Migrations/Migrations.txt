@@ -10,6 +10,6 @@ update-database -ConfigurationTypeName TIQRI.Devday.Migrations.DevDay.Configurat
 
 Enable-Migrations -ContextTypeName ApplicationDbContext -MigrationsDirectory Migrations\Identity
 
-add-migration -ConfigurationTypeName TIQRI.Devday.Migrations.DevDay.Configuration "InitialCreateIdentity"
+add-migration -ConfigurationTypeName TIQRI.Devday.Migrations.Identity.Configuration "InitialCreateIdentity"
 
-update-database -ConfigurationTypeName TIQRI.Devday.Migrations.DevDay.Configuration
+update-database -ConfigurationTypeName TIQRI.Devday.Migrations.Identity.Configuration

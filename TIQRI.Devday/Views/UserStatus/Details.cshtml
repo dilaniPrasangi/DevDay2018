@@ -1,0 +1,74 @@
+﻿@model TIQRI.Devday.Models.UserStatus
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>UserStatus</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.UserStatusId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserStatusId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserStatusName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserStatusName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Archived)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Archived)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateLastUpdated)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateLastUpdated)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserLastUpdated)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserLastUpdated)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateCreated)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateCreated)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserCreated)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserCreated)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

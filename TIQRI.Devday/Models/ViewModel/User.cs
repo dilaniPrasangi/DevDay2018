@@ -7,7 +7,7 @@ namespace TIQRI.Devday.Models
 {
     public class User : EntityBase
     {
-        public int UserId { get; set; }
+      
         public string UserEmail { get; set; }
         public double SecurityCode { get; set; }
         public string FirstName { get; set; }

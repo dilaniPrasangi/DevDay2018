@@ -211,6 +211,10 @@
     <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\TShirtSizesController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="Controllers\UserStatusController.cs" />
+    <Compile Include="Controllers\UserTypesController.cs" />
     <Compile Include="Data\ExampleData.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -228,11 +232,16 @@
       <DependentUpon>201806140458055_events.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Migrations\DevDay\201806150808576_InitialCreateUsers.cs" />
-    <Compile Include="Migrations\DevDay\201806150808576_InitialCreateUsers.Designer.cs">
-      <DependentUpon>201806150808576_InitialCreateUsers.cs</DependentUpon>
+    <Compile Include="Migrations\DevDay\201806150923154_InitialCreateUsers.cs" />
+    <Compile Include="Migrations\DevDay\201806150923154_InitialCreateUsers.Designer.cs">
+      <DependentUpon>201806150923154_InitialCreateUsers.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\DevDay\Configuration.cs" />
+    <Compile Include="Migrations\Identity\201806150833296_InitialCreateIdentity.cs" />
+    <Compile Include="Migrations\Identity\201806150833296_InitialCreateIdentity.Designer.cs">
+      <DependentUpon>201806150833296_InitialCreateIdentity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Identity\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\EntityBase.cs" />
     <Compile Include="Models\Event.cs" />
@@ -312,6 +321,26 @@
     <Content Include="Views\Events\Details.cshtml" />
     <Content Include="Views\Events\Edit.cshtml" />
     <Content Include="Views\Events\Index.cshtml" />
+    <Content Include="Views\TShirtSizes\Create.cshtml" />
+    <Content Include="Views\TShirtSizes\Delete.cshtml" />
+    <Content Include="Views\TShirtSizes\Details.cshtml" />
+    <Content Include="Views\TShirtSizes\Edit.cshtml" />
+    <Content Include="Views\TShirtSizes\Index.cshtml" />
+    <Content Include="Views\UserTypes\Create.cshtml" />
+    <Content Include="Views\UserTypes\Delete.cshtml" />
+    <Content Include="Views\UserTypes\Details.cshtml" />
+    <Content Include="Views\UserTypes\Edit.cshtml" />
+    <Content Include="Views\UserTypes\Index.cshtml" />
+    <Content Include="Views\UserStatus\Create.cshtml" />
+    <Content Include="Views\UserStatus\Delete.cshtml" />
+    <Content Include="Views\UserStatus\Details.cshtml" />
+    <Content Include="Views\UserStatus\Edit.cshtml" />
+    <Content Include="Views\UserStatus\Index.cshtml" />
+    <Content Include="Views\Users\Create.cshtml" />
+    <Content Include="Views\Users\Delete.cshtml" />
+    <Content Include="Views\Users\Details.cshtml" />
+    <Content Include="Views\Users\Edit.cshtml" />
+    <Content Include="Views\Users\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -335,8 +364,11 @@
     <EmbeddedResource Include="Migrations\201806140458055_events.resx">
       <DependentUpon>201806140458055_events.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\DevDay\201806150808576_InitialCreateUsers.resx">
-      <DependentUpon>201806150808576_InitialCreateUsers.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\DevDay\201806150923154_InitialCreateUsers.resx">
+      <DependentUpon>201806150923154_InitialCreateUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\Identity\201806150833296_InitialCreateIdentity.resx">
+      <DependentUpon>201806150833296_InitialCreateIdentity.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
