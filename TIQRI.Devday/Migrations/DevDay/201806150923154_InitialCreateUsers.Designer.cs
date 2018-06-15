@@ -13,7 +13,7 @@ namespace TIQRI.Devday.Migrations.DevDay
         
         string IMigrationMetadata.Id
         {
-            get { return "201806150808576_InitialCreateUsers"; }
+            get { return "201806150923154_InitialCreateUsers"; }
         }
         
         string IMigrationMetadata.Source
