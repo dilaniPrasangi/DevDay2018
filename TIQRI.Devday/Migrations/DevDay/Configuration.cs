@@ -1,5 +1,6 @@
 namespace TIQRI.Devday.Migrations.DevDay
 {
+    using Data;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
