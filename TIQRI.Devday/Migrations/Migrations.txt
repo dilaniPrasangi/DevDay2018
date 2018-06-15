@@ -1,0 +1,15 @@
+﻿========================================================================APPContext=======================================================
+
+Enable-Migrations -ContextTypeName AppContext -MigrationsDirectory Migrations\DevDay
+
+add-migration -ConfigurationTypeName TIQRI.Devday.Migrations.DevDay.Configuration "InitialCreateUsers"
+
+update-database -ConfigurationTypeName TIQRI.Devday.Migrations.DevDay.Configuration
+
+======================================================================ApplicationDBContext=================================================
+
+Enable-Migrations -ContextTypeName ApplicationDbContext -MigrationsDirectory Migrations\Identity
+
+add-migration -ConfigurationTypeName TIQRI.Devday.Migrations.DevDay.Configuration "InitialCreateIdentity"
+
+update-database -ConfigurationTypeName TIQRI.Devday.Migrations.DevDay.Configuration
