@@ -67,7 +67,7 @@ namespace TIQRI.Devday.Data
                     Gender ="F",
                     ContactNumber ="0776285168",
                     UserDescription="",
-                    TShirtSizeId=context.TShirtSizes.Find(1).TShirtSizeId,
+                    TShirtSizeId=context.TShirtSizes.Find(2).TShirtSizeId,
                     UserStatusId=context.UserStatuses.Find(1).UserStatusId,
                     UserTypeId=context.UserTypes.Find(1).UserTypeId,
 
