@@ -7,13 +7,14 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using TIQRI.Devday.Models;
+using TIQRI.Devday.Services;
 
 namespace TIQRI.Devday.Controllers
 {
     public class EventsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-
+        private EventService service = new EventService();
         // GET: Events
         public ActionResult Index()
         {
@@ -50,12 +51,7 @@ namespace TIQRI.Devday.Controllers
         {
             if (ModelState.IsValid)
             {
-                @event.Archived = false;
-                @event.DateCreated = DateTime.Now;
-                @event.DateLastUpdated = DateTime.Now;
-                //@event.UserCreated = HttpContext.cu
-                db.Events.Add(@event);
-                db.SaveChanges();
+                service.CreateEvent(@event, db);
                 return RedirectToAction("Index");
             }
 

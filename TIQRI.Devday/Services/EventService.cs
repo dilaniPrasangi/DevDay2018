@@ -8,10 +8,13 @@ namespace TIQRI.Devday.Services
 {
     public class EventService
     {
-        public bool CreateEvent(Event model) {
-            //var context = new ApplicationDbContext();
-            //context.Events.Add(model);
-            context.SaveChanges();
+        public bool CreateEvent(Event model, ApplicationDbContext db) {
+            model.Archived = false;
+            model.DateCreated = DateTime.Now;
+            model.DateLastUpdated = DateTime.Now;
+            //@event.UserCreated = HttpContext.cu
+            db.Events.Add(model);
+            db.SaveChanges();
             return true;
         }
     }
