@@ -11,7 +11,7 @@ namespace TIQRI.Devday.Services
         public bool CreateEvent(Event model) {
             //var context = new ApplicationDbContext();
             //context.Events.Add(model);
-            //context.SaveChanges();
+            context.SaveChanges();
             return true;
         }
     }
