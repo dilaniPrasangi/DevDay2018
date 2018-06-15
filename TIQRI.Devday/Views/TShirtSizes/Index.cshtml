@@ -1,4 +1,4 @@
-﻿@model IEnumerable<TIQRI.Devday.Models.TShirtSize>
+﻿@model IEnumerable<TIQRI.Devday.Models.TShirtSize> TShirtSizeId
 
 @{
     ViewBag.Title = "Index";
@@ -12,7 +12,7 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.TShirtSizeId)
+            @Html.DisplayNameFor(model => model.Id)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Size)
@@ -38,7 +38,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.TShirtSizeId)
+            @Html.DisplayFor(modelItem => item.Id)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Size)
