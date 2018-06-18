@@ -19,5 +19,7 @@ namespace TIQRI.Devday.Models
         public string Venue { get; set; }
 
         public string Description { get; set; }
+
+        public List<Track> Tracks { get; set; }
     }
 }
