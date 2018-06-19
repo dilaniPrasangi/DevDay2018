@@ -20,5 +20,13 @@ namespace TIQRI.Devday.Context
         public DbSet<UserStatus> UserStatuses { get; set; }
         public DbSet<UserType> UserTypes { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<Image> Images { get; set; }
+        public DbSet<Event> Events { get; set; }
+        public DbSet<Sponsor> Sponsors { get; set; }
+        
+
+        public DbSet<Track> Tracks { get; set; }
+
+        public DbSet<EventImage> EventImages { get; set; }
     }
 }

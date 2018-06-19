@@ -8,12 +8,13 @@ using System.Web;
 using System.Web.Mvc;
 using TIQRI.Devday.Models;
 using TIQRI.Devday.Services;
+using TIQRI.Devday.Context;
 
 namespace TIQRI.Devday.Controllers
 {
     public class EventsController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private AppContext db = new AppContext();
         private EventService service = new EventService();
         // GET: Events
         public ActionResult Index()
@@ -78,12 +79,11 @@ namespace TIQRI.Devday.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,EventStartTime,EventEndTime,Venue,Description,Archived,DateLastUpdated,UserLastUpdated,DateCreated,UserCreated")] Event @event)
+        public ActionResult Edit([Bind(Include = "Id,Name,EventStartTime,EventEndTime,Venue,Description,Archived,DateCreated,UserCreated")] Event @event)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(@event).State = EntityState.Modified;
-                db.SaveChanges();
+                service.EditEvent(@event, db);
                 return RedirectToAction("Index");
             }
             return View(@event);

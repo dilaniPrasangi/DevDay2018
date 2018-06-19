@@ -7,13 +7,13 @@ namespace TIQRI.Devday.Migrations.DevDay
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class InitialCreateUsers : IMigrationMetadata
+    public sealed partial class Init : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialCreateUsers));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Init));
         
         string IMigrationMetadata.Id
         {
-            get { return "201806150923154_InitialCreateUsers"; }
+            get { return "201806190437103_Init"; }
         }
         
         string IMigrationMetadata.Source

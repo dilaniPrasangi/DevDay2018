@@ -1,27 +1,12 @@
-namespace TIQRI.Devday.Migrations
+namespace TIQRI.Devday.Migrations.Identity
 {
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class init : DbMigration
+    public partial class InitialCreateIdentity : DbMigration
     {
         public override void Up()
         {
-            CreateTable(
-                "dbo.Events",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        Name = c.String(),
-                        EventDate = c.DateTime(),
-                        Archived = c.Boolean(nullable: false),
-                        DateLastUpdated = c.DateTime(),
-                        UserLastUpdated = c.String(),
-                        DateCreated = c.DateTime(),
-                        UserCreated = c.String(),
-                    })
-                .PrimaryKey(t => t.Id);
-            
             CreateTable(
                 "dbo.AspNetRoles",
                 c => new
@@ -109,7 +94,6 @@ namespace TIQRI.Devday.Migrations
             DropTable("dbo.AspNetUsers");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetRoles");
-            DropTable("dbo.Events");
         }
     }
 }

@@ -24,7 +24,7 @@ namespace TIQRI.Devday.Models
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
-        public DbSet<Event> Events { get; set; }
+      
 
 
         public static ApplicationDbContext Create()

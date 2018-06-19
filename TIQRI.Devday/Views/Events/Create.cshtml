@@ -18,7 +18,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control " } })
                 @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -26,7 +26,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.EventStartTime, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.EventStartTime, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.EventStartTime, new { htmlAttributes = new { @class = "form-control dateTime-picker" } })
                 @Html.ValidationMessageFor(model => model.EventStartTime, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -34,7 +34,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.EventEndTime, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.EventEndTime, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.EventEndTime, new { htmlAttributes = new { @class = "form-control dateTime-picker" } })
                 @Html.ValidationMessageFor(model => model.EventEndTime, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -79,4 +79,19 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+@Scripts.Render("~/bundles/jqueryDateTime")
+
+@*@Scripts.Render("@Url.Content("~/app/Events.js")")*@
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".dateTime-picker").datetimepicker({
+            dateFormat: 'dd-M-yy',
+            timeFormat: 'hh:mm TT'
+        });
+    });
+</script>
+}
+
+@section Styles {
+    <link href="@Url.Content("~/Content/jquery.datetimepicker.css")" rel="stylesheet" type="text/css" />
 }
