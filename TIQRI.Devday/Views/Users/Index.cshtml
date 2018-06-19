@@ -20,9 +20,9 @@
         <th>
             @Html.DisplayNameFor(model => model.UserType.UserTypeName)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.Id)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.UserEmail)
         </th>
@@ -44,7 +44,7 @@
         <th>
             @Html.DisplayNameFor(model => model.ContactNumber)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.UserDescription)
         </th>
         <th>
@@ -61,7 +61,7 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.UserCreated)
-        </th>
+        </th>*@
         <th></th>
     </tr>
 
@@ -76,9 +76,9 @@
         <td>
             @Html.DisplayFor(modelItem => item.UserType.UserTypeName)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.Id)
-        </td>
+        </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.UserEmail)
         </td>
@@ -100,7 +100,7 @@
         <td>
             @Html.DisplayFor(modelItem => item.ContactNumber)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.UserDescription)
         </td>
         <td>
@@ -117,7 +117,7 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.UserCreated)
-        </td>
+        </td>*@
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
             @Html.ActionLink("Details", "Details", new { id=item.Id }) |

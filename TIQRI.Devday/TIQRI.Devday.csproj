@@ -236,6 +236,10 @@
     <Compile Include="Migrations\DevDay\201806150923154_InitialCreateUsers.Designer.cs">
       <DependentUpon>201806150923154_InitialCreateUsers.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\DevDay\201806151113105_InitialUpdateColumns.cs" />
+    <Compile Include="Migrations\DevDay\201806151113105_InitialUpdateColumns.Designer.cs">
+      <DependentUpon>201806151113105_InitialUpdateColumns.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\DevDay\Configuration.cs" />
     <Compile Include="Migrations\Identity\201806150833296_InitialCreateIdentity.cs" />
     <Compile Include="Migrations\Identity\201806150833296_InitialCreateIdentity.Designer.cs">
@@ -366,6 +370,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\DevDay\201806150923154_InitialCreateUsers.resx">
       <DependentUpon>201806150923154_InitialCreateUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\DevDay\201806151113105_InitialUpdateColumns.resx">
+      <DependentUpon>201806151113105_InitialUpdateColumns.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\Identity\201806150833296_InitialCreateIdentity.resx">
       <DependentUpon>201806150833296_InitialCreateIdentity.cs</DependentUpon>
