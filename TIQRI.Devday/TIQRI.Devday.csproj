@@ -210,6 +210,9 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\API\LoginController.cs" />
     <Compile Include="Controllers\EventsController.cs" />
+    <Compile Include="Controllers\FeedbackQuestionsController.cs" />
+    <Compile Include="Controllers\FeedbacksController.cs" />
+    <Compile Include="Controllers\FeedbackTypesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\TracksController.cs" />
@@ -225,6 +228,10 @@
     <Compile Include="Migrations\DevDay\201806190437103_Init.Designer.cs">
       <DependentUpon>201806190437103_Init.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\DevDay\201806190956456_FeedbackIntegration.cs" />
+    <Compile Include="Migrations\DevDay\201806190956456_FeedbackIntegration.Designer.cs">
+      <DependentUpon>201806190956456_FeedbackIntegration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\DevDay\Configuration.cs" />
     <Compile Include="Migrations\Identity\201806190434008_InitialCreateIdentity.cs" />
     <Compile Include="Migrations\Identity\201806190434008_InitialCreateIdentity.Designer.cs">
@@ -234,6 +241,9 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\EntityBase.cs" />
     <Compile Include="Models\ViewModel\EventImage.cs" />
+    <Compile Include="Models\ViewModel\Feedback.cs" />
+    <Compile Include="Models\ViewModel\FeedbackQuestion.cs" />
+    <Compile Include="Models\ViewModel\FeedbackType.cs" />
     <Compile Include="Models\ViewModel\Image.cs" />
     <Compile Include="Models\ViewModel\Event.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -388,6 +398,21 @@
     <Content Include="Views\Tracks\Edit.cshtml" />
     <Content Include="Views\Tracks\Index.cshtml" />
     <Content Include="Views\Shared\DateTime.cshtml" />
+    <Content Include="Views\Feedbacks\Create.cshtml" />
+    <Content Include="Views\Feedbacks\Delete.cshtml" />
+    <Content Include="Views\Feedbacks\Details.cshtml" />
+    <Content Include="Views\Feedbacks\Edit.cshtml" />
+    <Content Include="Views\Feedbacks\Index.cshtml" />
+    <Content Include="Views\FeedbackQuestions\Create.cshtml" />
+    <Content Include="Views\FeedbackQuestions\Delete.cshtml" />
+    <Content Include="Views\FeedbackQuestions\Details.cshtml" />
+    <Content Include="Views\FeedbackQuestions\Edit.cshtml" />
+    <Content Include="Views\FeedbackQuestions\Index.cshtml" />
+    <Content Include="Views\FeedbackTypes\Create.cshtml" />
+    <Content Include="Views\FeedbackTypes\Delete.cshtml" />
+    <Content Include="Views\FeedbackTypes\Details.cshtml" />
+    <Content Include="Views\FeedbackTypes\Edit.cshtml" />
+    <Content Include="Views\FeedbackTypes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -404,8 +429,8 @@
     <EmbeddedResource Include="Migrations\DevDay\201806190437103_Init.resx">
       <DependentUpon>201806190437103_Init.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\DevDay\201806180816290_TracksTableCreated.resx">
-      <DependentUpon>201806180816290_TracksTableCreated.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\DevDay\201806190956456_FeedbackIntegration.resx">
+      <DependentUpon>201806190956456_FeedbackIntegration.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\Identity\201806190434008_InitialCreateIdentity.resx">
       <DependentUpon>201806190434008_InitialCreateIdentity.cs</DependentUpon>

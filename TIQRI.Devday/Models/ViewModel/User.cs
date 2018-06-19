@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Web;
 
-namespace TIQRI.Devday.Models
+namespace TIQRI.Devday.Models.ViewModel
 {
     public class User : EntityBase
     {
@@ -37,5 +34,7 @@ namespace TIQRI.Devday.Models
         [DisplayName("T-Shirt Size")]
         public virtual int TShirtSizeId { get; set; }
         public virtual TShirtSize TShirtSize { get; set; }
+
+        public List<Feedback> Feedbacks { get; set; }
     }
 }
