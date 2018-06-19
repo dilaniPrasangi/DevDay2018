@@ -29,5 +29,7 @@ namespace TIQRI.Devday.Models
         public List<Sponsor> Sponsors { get; set; }
 
         public List<Image> Images { get; set; }
+
+        public List<Track> Tracks { get; set; }
     }
 }
