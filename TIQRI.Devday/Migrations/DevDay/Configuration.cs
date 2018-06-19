@@ -9,7 +9,7 @@ namespace TIQRI.Devday.Migrations.DevDay
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
             MigrationsDirectory = @"Migrations\DevDay";
         }
 

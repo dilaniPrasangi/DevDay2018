@@ -8,12 +8,23 @@ using System.Web;
 using System.Web.Mvc;
 using TIQRI.Devday.Context;
 using TIQRI.Devday.Models;
+using TIQRI.Devday.Services;
 
 namespace TIQRI.Devday.Controllers
 {
     public class UserStatusController : Controller
     {
+        #region Properties
+
+        //App Context
         private AppContext db = new AppContext();
+
+        //User Type Service
+        private UserStatusService service = new UserStatusService();
+
+        #endregion
+
+        #region Public Methods
 
         // GET: UserStatus
         public ActionResult Index()
@@ -51,8 +62,7 @@ namespace TIQRI.Devday.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.UserStatuses.Add(userStatus);
-                db.SaveChanges();
+                service.CreateUserStatus(userStatus, db);
                 return RedirectToAction("Index");
             }
 
@@ -83,8 +93,7 @@ namespace TIQRI.Devday.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(userStatus).State = EntityState.Modified;
-                db.SaveChanges();
+                service.EditUserStatus(userStatus, db);
                 return RedirectToAction("Index");
             }
             return View(userStatus);
@@ -110,11 +119,13 @@ namespace TIQRI.Devday.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            UserStatus userStatus = db.UserStatuses.Find(id);
-            db.UserStatuses.Remove(userStatus);
-            db.SaveChanges();
+            service.DeleteUserStatus(id, db);
             return RedirectToAction("Index");
         }
+
+        #endregion
+
+        #region Protected Method
 
         protected override void Dispose(bool disposing)
         {
@@ -124,5 +135,7 @@ namespace TIQRI.Devday.Controllers
             }
             base.Dispose(disposing);
         }
+
+        #endregion
     }
 }

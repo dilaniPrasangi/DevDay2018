@@ -1,4 +1,6 @@
-﻿using System;
+﻿#region Using Statements
+
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -8,12 +10,23 @@ using System.Web;
 using System.Web.Mvc;
 using TIQRI.Devday.Context;
 using TIQRI.Devday.Models;
+using TIQRI.Devday.Services;
+
+#endregion
 
 namespace TIQRI.Devday.Controllers
 {
     public class UsersController : Controller
     {
+        #region Properties
+
         private AppContext db = new AppContext();
+
+        private UserService service = new UserService();
+
+        #endregion
+
+        #region Public Methods
 
         // GET: Users
         public ActionResult Index()
@@ -55,8 +68,7 @@ namespace TIQRI.Devday.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Users.Add(user);
-                db.SaveChanges();
+                service.CreateUser(user, db);
                 return RedirectToAction("Index");
             }
 
@@ -93,8 +105,7 @@ namespace TIQRI.Devday.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(user).State = EntityState.Modified;
-                db.SaveChanges();
+                service.EditUser(user, db);
                 return RedirectToAction("Index");
             }
             ViewBag.TShirtSizeId = new SelectList(db.TShirtSizes, "Id", "Size", user.TShirtSizeId);
@@ -122,12 +133,14 @@ namespace TIQRI.Devday.Controllers
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
-        {
-            User user = db.Users.Find(id);
-            db.Users.Remove(user);
-            db.SaveChanges();
+        {         
+            service.DeleteUser(id, db);
             return RedirectToAction("Index");
         }
+
+        #endregion
+
+        #region Protected Methods
 
         protected override void Dispose(bool disposing)
         {
@@ -137,5 +150,7 @@ namespace TIQRI.Devday.Controllers
             }
             base.Dispose(disposing);
         }
+
+        #endregion
     }
 }
