@@ -225,19 +225,6 @@
     <Compile Include="Migrations\DevDay\201806190437103_Init.Designer.cs">
       <DependentUpon>201806190437103_Init.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201806110619258_init1.cs" />
-    <Compile Include="Migrations\201806110619258_init1.Designer.cs">
-      <DependentUpon>201806110619258_init1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201806140458055_events.cs" />
-    <Compile Include="Migrations\201806140458055_events.Designer.cs">
-      <DependentUpon>201806140458055_events.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Migrations\DevDay\201806150923154_InitialCreateUsers.cs" />
-    <Compile Include="Migrations\DevDay\201806150923154_InitialCreateUsers.Designer.cs">
-      <DependentUpon>201806150923154_InitialCreateUsers.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\DevDay\Configuration.cs" />
     <Compile Include="Migrations\Identity\201806190434008_InitialCreateIdentity.cs" />
     <Compile Include="Migrations\Identity\201806190434008_InitialCreateIdentity.Designer.cs">
@@ -420,8 +407,6 @@
     <EmbeddedResource Include="Migrations\DevDay\201806180816290_TracksTableCreated.resx">
       <DependentUpon>201806180816290_TracksTableCreated.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\Identity\201806150833296_InitialCreateIdentity.resx">
-      <DependentUpon>201806150833296_InitialCreateIdentity.cs</DependentUpon>
     <EmbeddedResource Include="Migrations\Identity\201806190434008_InitialCreateIdentity.resx">
       <DependentUpon>201806190434008_InitialCreateIdentity.cs</DependentUpon>
     </EmbeddedResource>
