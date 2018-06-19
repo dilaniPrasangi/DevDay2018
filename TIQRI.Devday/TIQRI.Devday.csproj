@@ -25,6 +25,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -211,6 +212,7 @@
     <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\TracksController.cs" />
     <Compile Include="Controllers\TShirtSizesController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\UserStatusController.cs" />
@@ -236,9 +238,9 @@
     <Compile Include="Migrations\DevDay\201806150923154_InitialCreateUsers.Designer.cs">
       <DependentUpon>201806150923154_InitialCreateUsers.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\DevDay\201806151113105_InitialUpdateColumns.cs" />
-    <Compile Include="Migrations\DevDay\201806151113105_InitialUpdateColumns.Designer.cs">
-      <DependentUpon>201806151113105_InitialUpdateColumns.cs</DependentUpon>
+    <Compile Include="Migrations\DevDay\201806180816290_TracksTableCreated.cs" />
+    <Compile Include="Migrations\DevDay\201806180816290_TracksTableCreated.Designer.cs">
+      <DependentUpon>201806180816290_TracksTableCreated.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\DevDay\Configuration.cs" />
     <Compile Include="Migrations\Identity\201806150833296_InitialCreateIdentity.cs" />
@@ -251,6 +253,7 @@
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Track.cs" />
     <Compile Include="Models\ViewModel\TShirtSize.cs" />
     <Compile Include="Models\ViewModel\User.cs" />
     <Compile Include="Models\ViewModel\UserStatus.cs" />
@@ -345,6 +348,11 @@
     <Content Include="Views\Users\Details.cshtml" />
     <Content Include="Views\Users\Edit.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
+    <Content Include="Views\Tracks\Create.cshtml" />
+    <Content Include="Views\Tracks\Delete.cshtml" />
+    <Content Include="Views\Tracks\Details.cshtml" />
+    <Content Include="Views\Tracks\Edit.cshtml" />
+    <Content Include="Views\Tracks\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -371,8 +379,8 @@
     <EmbeddedResource Include="Migrations\DevDay\201806150923154_InitialCreateUsers.resx">
       <DependentUpon>201806150923154_InitialCreateUsers.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\DevDay\201806151113105_InitialUpdateColumns.resx">
-      <DependentUpon>201806151113105_InitialUpdateColumns.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\DevDay\201806180816290_TracksTableCreated.resx">
+      <DependentUpon>201806180816290_TracksTableCreated.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\Identity\201806150833296_InitialCreateIdentity.resx">
       <DependentUpon>201806150833296_InitialCreateIdentity.cs</DependentUpon>
