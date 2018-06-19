@@ -225,6 +225,10 @@
     <Compile Include="Migrations\DevDay\201806190437103_Init.Designer.cs">
       <DependentUpon>201806190437103_Init.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\DevDay\201806190754344_Tracks.cs" />
+    <Compile Include="Migrations\DevDay\201806190754344_Tracks.Designer.cs">
+      <DependentUpon>201806190754344_Tracks.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\DevDay\Configuration.cs" />
     <Compile Include="Migrations\Identity\201806190434008_InitialCreateIdentity.cs" />
     <Compile Include="Migrations\Identity\201806190434008_InitialCreateIdentity.Designer.cs">
@@ -404,8 +408,8 @@
     <EmbeddedResource Include="Migrations\DevDay\201806190437103_Init.resx">
       <DependentUpon>201806190437103_Init.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\DevDay\201806180816290_TracksTableCreated.resx">
-      <DependentUpon>201806180816290_TracksTableCreated.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\DevDay\201806190754344_Tracks.resx">
+      <DependentUpon>201806190754344_Tracks.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\Identity\201806190434008_InitialCreateIdentity.resx">
       <DependentUpon>201806190434008_InitialCreateIdentity.cs</DependentUpon>
