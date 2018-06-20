@@ -1,4 +1,6 @@
-﻿using System;
+﻿#region Using Statements
+
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -7,14 +9,24 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using TIQRI.Devday.Context;
-using TIQRI.Devday.Models;
 using TIQRI.Devday.Models.ViewModel;
+using TIQRI.Devday.Services;
 
 namespace TIQRI.Devday.Controllers
 {
     public class UserTypesController : Controller
     {
+        #region Properties
+
+        //App Context
         private AppContext db = new AppContext();
+
+        //User Type Service
+        private UserTypeService service = new UserTypeService();
+
+        #endregion
+
+        #region Public Methods
 
         // GET: UserTypes
         public ActionResult Index()
@@ -52,8 +64,7 @@ namespace TIQRI.Devday.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.UserTypes.Add(userType);
-                db.SaveChanges();
+                service.CreateUserType(userType, db);
                 return RedirectToAction("Index");
             }
 
@@ -84,8 +95,7 @@ namespace TIQRI.Devday.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(userType).State = EntityState.Modified;
-                db.SaveChanges();
+                service.EditUserType(userType, db);            
                 return RedirectToAction("Index");
             }
             return View(userType);
@@ -111,11 +121,13 @@ namespace TIQRI.Devday.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            UserType userType = db.UserTypes.Find(id);
-            db.UserTypes.Remove(userType);
-            db.SaveChanges();
+            service.DeleteUserType(id, db);
             return RedirectToAction("Index");
         }
+
+        #endregion
+
+        #region Protected Methods
 
         protected override void Dispose(bool disposing)
         {
@@ -125,5 +137,8 @@ namespace TIQRI.Devday.Controllers
             }
             base.Dispose(disposing);
         }
+
+        #endregion
     }
 }
+#endregion

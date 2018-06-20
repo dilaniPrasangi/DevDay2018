@@ -1,11 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
 
 namespace TIQRI.Devday.Models.ViewModel
 {
     public class User : EntityBase
     {
         [DisplayName("Email")]
+        [Remote("IsNameandMailExist", "Validation", ErrorMessage = "User already exists!", AdditionalFields = "FirstName, LastName")]
         public string UserEmail { get; set; }
         [DisplayName("Code")]
         public double SecurityCode { get; set; }

@@ -13,3 +13,12 @@ Enable-Migrations -ContextTypeName ApplicationDbContext -MigrationsDirectory Mig
 add-migration -ConfigurationTypeName TIQRI.Devday.Migrations.Identity.Configuration "InitialCreateIdentity"
 
 update-database -ConfigurationTypeName TIQRI.Devday.Migrations.Identity.Configuration
+
+======================================================================Track=================================================
+
+add-migration -ConfigurationTypeName TIQRI.Devday.Migrations.DevDay.Configuration "Init_Updates"
+
+update-database -ConfigurationTypeName TIQRI.Devday.Migrations.DevDay.Configuration -verbose
+
+
+Update-database force -TargetMigration:0 -ConfigurationTypeName TIQRI.Devday.Migrations.DevDay.Configuration
