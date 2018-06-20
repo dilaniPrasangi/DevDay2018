@@ -4,7 +4,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using TIQRI.Devday.Context;
-using TIQRI.Devday.Models;
+using TIQRI.Devday.Models.ViewModel;
 
 namespace TIQRI.Devday.Services
 {

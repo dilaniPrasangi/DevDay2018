@@ -1,4 +1,4 @@
-﻿@model IEnumerable<TIQRI.Devday.Models.ViewModel.Track>
+﻿@model IEnumerable<TIQRI.Devday.Models.ViewModel.Feedback>
 
 @{
     ViewBag.Title = "Index";
@@ -12,10 +12,22 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+            @Html.DisplayNameFor(model => model.FeedbackQuestion.Question)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Description)
+            @Html.DisplayNameFor(model => model.FeedbackType.FeedbackTypeName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User.UserEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FeedbackScore)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CategoryId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Comment)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Archived)
@@ -38,10 +50,22 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Name)
+            @Html.DisplayFor(modelItem => item.FeedbackQuestion.Question)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Description)
+            @Html.DisplayFor(modelItem => item.FeedbackType.FeedbackTypeName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.User.UserEmail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FeedbackScore)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CategoryId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Comment)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Archived)
