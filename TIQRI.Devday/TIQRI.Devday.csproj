@@ -417,6 +417,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\DevDay\201806190754344_Tracks.resx">
       <DependentUpon>201806190754344_Tracks.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\DevDay\201806190803220_Init_Updates.resx">
       <DependentUpon>201806190803220_Init_Updates.cs</DependentUpon>
     </EmbeddedResource>
