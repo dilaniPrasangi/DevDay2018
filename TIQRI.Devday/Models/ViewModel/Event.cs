@@ -9,18 +9,21 @@ namespace TIQRI.Devday.Models.ViewModel
 {
     public class Event : EntityBase
     {
+        [Required]
         public string Name { get; set; }
 
+        [Required]
         [DisplayName("Start Time")]
         [DisplayFormat(DataFormatString = "{0:dd-MMM-yyyy hh:mm tt}", ApplyFormatInEditMode = true)]
         public DateTime EventStartTime { get; set; }
 
-
+        [Required]
         [DisplayFormat(DataFormatString = "{0:dd-MMM-yyyy hh:mm tt}", ApplyFormatInEditMode = true)]
         [DisplayName("End Time")]
         
         public DateTime EventEndTime { get; set; }
 
+        [Required]
         public string Venue { get; set; }
 
         [DataType(DataType.MultilineText)]
