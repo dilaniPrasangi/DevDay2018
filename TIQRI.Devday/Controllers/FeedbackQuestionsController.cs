@@ -12,107 +12,107 @@ using TIQRI.Devday.Models.ViewModel;
 
 namespace TIQRI.Devday.Controllers
 {
-    public class TracksController : Controller
+    public class FeedbackQuestionsController : Controller
     {
         private AppContext db = new AppContext();
 
-        // GET: Tracks
+        // GET: FeedbackQuestions
         public async Task<ActionResult> Index()
         {
-            return View(await db.Tracks.ToListAsync());
+            return View(await db.FeedbackQuestions.ToListAsync());
         }
 
-        // GET: Tracks/Details/5
+        // GET: FeedbackQuestions/Details/5
         public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Track track = await db.Tracks.FindAsync(id);
-            if (track == null)
+            FeedbackQuestion feedbackQuestion = await db.FeedbackQuestions.FindAsync(id);
+            if (feedbackQuestion == null)
             {
                 return HttpNotFound();
             }
-            return View(track);
+            return View(feedbackQuestion);
         }
 
-        // GET: Tracks/Create
+        // GET: FeedbackQuestions/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Tracks/Create
+        // POST: FeedbackQuestions/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,Name,Description,Archived,DateLastUpdated,UserLastUpdated,DateCreated,UserCreated")] Track track)
+        public async Task<ActionResult> Create([Bind(Include = "Id,Question,Archived,DateLastUpdated,UserLastUpdated,DateCreated,UserCreated")] FeedbackQuestion feedbackQuestion)
         {
             if (ModelState.IsValid)
             {
-                db.Tracks.Add(track);
+                db.FeedbackQuestions.Add(feedbackQuestion);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
-            return View(track);
+            return View(feedbackQuestion);
         }
 
-        // GET: Tracks/Edit/5
+        // GET: FeedbackQuestions/Edit/5
         public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Track track = await db.Tracks.FindAsync(id);
-            if (track == null)
+            FeedbackQuestion feedbackQuestion = await db.FeedbackQuestions.FindAsync(id);
+            if (feedbackQuestion == null)
             {
                 return HttpNotFound();
             }
-            return View(track);
+            return View(feedbackQuestion);
         }
 
-        // POST: Tracks/Edit/5
+        // POST: FeedbackQuestions/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,Name,Description,Archived,DateLastUpdated,UserLastUpdated,DateCreated,UserCreated")] Track track)
+        public async Task<ActionResult> Edit([Bind(Include = "Id,Question,Archived,DateLastUpdated,UserLastUpdated,DateCreated,UserCreated")] FeedbackQuestion feedbackQuestion)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(track).State = EntityState.Modified;
+                db.Entry(feedbackQuestion).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            return View(track);
+            return View(feedbackQuestion);
         }
 
-        // GET: Tracks/Delete/5
+        // GET: FeedbackQuestions/Delete/5
         public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Track track = await db.Tracks.FindAsync(id);
-            if (track == null)
+            FeedbackQuestion feedbackQuestion = await db.FeedbackQuestions.FindAsync(id);
+            if (feedbackQuestion == null)
             {
                 return HttpNotFound();
             }
-            return View(track);
+            return View(feedbackQuestion);
         }
 
-        // POST: Tracks/Delete/5
+        // POST: FeedbackQuestions/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            Track track = await db.Tracks.FindAsync(id);
-            db.Tracks.Remove(track);
+            FeedbackQuestion feedbackQuestion = await db.FeedbackQuestions.FindAsync(id);
+            db.FeedbackQuestions.Remove(feedbackQuestion);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }

@@ -7,7 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using TIQRI.Devday.Context;
-using TIQRI.Devday.Models;
+using TIQRI.Devday.Models.ViewModel;
 using TIQRI.Devday.Services;
 
 namespace TIQRI.Devday.Controllers
