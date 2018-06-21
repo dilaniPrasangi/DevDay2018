@@ -9,17 +9,13 @@ namespace TIQRI.Devday.Models.ViewModel
 {
     public class User : EntityBase
     {
-        [DisplayName("Email")]   
-        [Required]
-        [Key]
+        [DisplayName("Email")]          
         public string UserEmail { get; set; }  
              
-        [DisplayName("First Name")]
-        [Required]
+        [DisplayName("First Name")]       
         public string FirstName { get; set; }
 
-        [DisplayName("Last Name")]
-        [Required]
+        [DisplayName("Last Name")]       
         public string LastName { get; set; }      
 
         [DisplayName("Company")]
