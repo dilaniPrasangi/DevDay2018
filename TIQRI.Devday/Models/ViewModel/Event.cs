@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace TIQRI.Devday.Models
+namespace TIQRI.Devday.Models.ViewModel
 {
     public class Event : EntityBase
     {

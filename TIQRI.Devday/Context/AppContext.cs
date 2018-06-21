@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Data.Entity;
 using TIQRI.Devday.Models;
+using TIQRI.Devday.Models.ViewModel;
 
 namespace TIQRI.Devday.Context
 
@@ -23,10 +24,10 @@ namespace TIQRI.Devday.Context
         public DbSet<Image> Images { get; set; }
         public DbSet<Event> Events { get; set; }
         public DbSet<Sponsor> Sponsors { get; set; }
-        
-
         public DbSet<Track> Tracks { get; set; }
-
         public DbSet<EventImage> EventImages { get; set; }
+        public DbSet<Feedback> Feedbacks { get; set; }
+        public DbSet<FeedbackQuestion> FeedbackQuestions { get; set; }
+        public DbSet<FeedbackType> FeedbackTypes { get; set; }
     }
 }

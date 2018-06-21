@@ -1,4 +1,4 @@
-﻿@model TIQRI.Devday.Models.Track
+﻿@model TIQRI.Devday.Models.ViewModel.Track
 
 @{
     ViewBag.Title = "Delete";
@@ -12,11 +12,11 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.TrackName)
+            @Html.DisplayNameFor(model => model.Name)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.TrackName)
+            @Html.DisplayFor(model => model.Name)
         </dd>
 
         <dt>
@@ -25,14 +25,6 @@
 
         <dd>
             @Html.DisplayFor(model => model.Description)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.EventId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.EventId)
         </dd>
 
         <dt>

@@ -8,7 +8,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using TIQRI.Devday.Context;
-using TIQRI.Devday.Models;
+using TIQRI.Devday.Models.ViewModel;
 
 namespace TIQRI.Devday.Controllers
 {
@@ -48,7 +48,7 @@ namespace TIQRI.Devday.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,TrackName,Description,EventId,Archived,DateLastUpdated,UserLastUpdated,DateCreated,UserCreated")] Track track)
+        public async Task<ActionResult> Create([Bind(Include = "Id,Name,Description,Archived,DateLastUpdated,UserLastUpdated,DateCreated,UserCreated")] Track track)
         {
             if (ModelState.IsValid)
             {
@@ -80,7 +80,7 @@ namespace TIQRI.Devday.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,TrackName,Description,EventId,Archived,DateLastUpdated,UserLastUpdated,DateCreated,UserCreated")] Track track)
+        public async Task<ActionResult> Edit([Bind(Include = "Id,Name,Description,Archived,DateLastUpdated,UserLastUpdated,DateCreated,UserCreated")] Track track)
         {
             if (ModelState.IsValid)
             {

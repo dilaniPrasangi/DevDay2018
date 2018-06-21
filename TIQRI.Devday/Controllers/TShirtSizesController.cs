@@ -1,4 +1,6 @@
-﻿using System;
+﻿#region Using Statement
+
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -7,13 +9,22 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using TIQRI.Devday.Context;
-using TIQRI.Devday.Models;
+using TIQRI.Devday.Models.ViewModel;
+using TIQRI.Devday.Services;
 
 namespace TIQRI.Devday.Controllers
 {
     public class TShirtSizesController : Controller
     {
+        #region Properties
+
         private AppContext db = new AppContext();
+
+        private TShirtSizeService service = new TShirtSizeService();
+
+        #endregion
+
+        #region Public Methods
 
         // GET: TShirtSizes
         public ActionResult Index()
@@ -51,8 +62,7 @@ namespace TIQRI.Devday.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.TShirtSizes.Add(tShirtSize);
-                db.SaveChanges();
+                service.CreateUserTSize(tShirtSize, db);
                 return RedirectToAction("Index");
             }
 
@@ -83,8 +93,7 @@ namespace TIQRI.Devday.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(tShirtSize).State = EntityState.Modified;
-                db.SaveChanges();
+                service.EditUserTSize(tShirtSize, db);
                 return RedirectToAction("Index");
             }
             return View(tShirtSize);
@@ -110,11 +119,13 @@ namespace TIQRI.Devday.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            TShirtSize tShirtSize = db.TShirtSizes.Find(id);
-            db.TShirtSizes.Remove(tShirtSize);
-            db.SaveChanges();
+            service.DeleteUserTSize(id, db);
             return RedirectToAction("Index");
         }
+
+        #endregion
+
+        #region Protected Methods
 
         protected override void Dispose(bool disposing)
         {
@@ -124,5 +135,8 @@ namespace TIQRI.Devday.Controllers
             }
             base.Dispose(disposing);
         }
+
+        #endregion
     }
 }
+#endregion

@@ -6,9 +6,9 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using TIQRI.Devday.Models;
 using TIQRI.Devday.Services;
 using TIQRI.Devday.Context;
+using TIQRI.Devday.Models.ViewModel;
 
 namespace TIQRI.Devday.Controllers
 {
