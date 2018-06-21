@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -34,8 +35,10 @@ namespace TIQRI.Devday.Models.ViewModel
         public Image Logo { get; set; }
         public Image Banner { get; set; }
 
-        public Event Event { get; set; }
-       
+        [DisplayName("Event")]
+        public int EventId { get; set; }
+        public virtual Event Event { get; set; }
+
 
     }
 }

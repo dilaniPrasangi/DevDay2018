@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using TIQRI.Devday.Context;
-using TIQRI.Devday.Models;
+
+using TIQRI.Devday.Models.ViewModel;
 using TIQRI.Devday.Services;
 
 namespace TIQRI.Devday.Controllers
@@ -41,7 +40,8 @@ namespace TIQRI.Devday.Controllers
         // GET: Sponsors/Create
         public ActionResult Create()
         {
-            ViewBag.EventList = new SelectList(eventService.GetActiveEvents(db),"Id", "Name");
+            
+            ViewBag.EventId = new SelectList(eventService.GetActiveEvents(db), "Id", "Name");
             return View();
         }
 
@@ -50,13 +50,12 @@ namespace TIQRI.Devday.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Type,Description,ContactNumber,Email,Event")] Sponsor sponsor, HttpPostedFileBase LogoImageData)
+        public ActionResult Create([Bind(Include = "Id,Name,Type,Description,ContactNumber,Email,EventId")] Sponsor sponsor, HttpPostedFileBase LogoImageData,HttpPostedFileBase BannerImageData)
         {
-            ViewBag.EventList = new SelectList(eventService.GetActiveEvents(db), "Id", "Name");
+            
             if (ModelState.IsValid)
             {
-                //HttpPostedFileBase file = Request.Files["LogoImageData"];
-                service.CreateSponsor(sponsor, LogoImageData, db);
+                service.CreateSponsor(sponsor, LogoImageData, db, BannerImageData);
                 return RedirectToAction("Index");
             }
 
