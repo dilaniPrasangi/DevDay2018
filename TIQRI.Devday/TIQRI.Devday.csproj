@@ -429,9 +429,6 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\DevDay\201806190803220_Init_Updates.resx">
-      <DependentUpon>201806190803220_Init_Updates.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\Identity\201806190434008_InitialCreateIdentity.resx">
       <DependentUpon>201806190434008_InitialCreateIdentity.cs</DependentUpon>
     </EmbeddedResource>
