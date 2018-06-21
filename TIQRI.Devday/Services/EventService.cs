@@ -30,5 +30,10 @@ namespace TIQRI.Devday.Services
             db.SaveChanges();
             return true;
         }
+
+        public List<Event> GetActiveEvents(AppContext db)
+        {
+            return db.Events.Where(e => e.Archived.Equals(false)).ToList();
+        }
     }
 }
