@@ -212,6 +212,7 @@
     <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\SponsorsController.cs" />
     <Compile Include="Controllers\TracksController.cs" />
     <Compile Include="Controllers\TShirtSizesController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
@@ -228,6 +229,10 @@
     <Compile Include="Migrations\DevDay\201806190754344_Tracks.cs" />
     <Compile Include="Migrations\DevDay\201806190754344_Tracks.Designer.cs">
       <DependentUpon>201806190754344_Tracks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\DevDay\201806200430083_Sponsors.cs" />
+    <Compile Include="Migrations\DevDay\201806200430083_Sponsors.Designer.cs">
+      <DependentUpon>201806200430083_Sponsors.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\DevDay\Configuration.cs" />
     <Compile Include="Migrations\Identity\201806190434008_InitialCreateIdentity.cs" />
@@ -250,6 +255,7 @@
     <Compile Include="Models\ViewModel\UserType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\EventService.cs" />
+    <Compile Include="Services\SponsorService.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -392,6 +398,11 @@
     <Content Include="Views\Tracks\Edit.cshtml" />
     <Content Include="Views\Tracks\Index.cshtml" />
     <Content Include="Views\Shared\DateTime.cshtml" />
+    <Content Include="Views\Sponsors\Create.cshtml" />
+    <Content Include="Views\Sponsors\Delete.cshtml" />
+    <Content Include="Views\Sponsors\Details.cshtml" />
+    <Content Include="Views\Sponsors\Edit.cshtml" />
+    <Content Include="Views\Sponsors\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -410,6 +421,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\DevDay\201806190754344_Tracks.resx">
       <DependentUpon>201806190754344_Tracks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\DevDay\201806200430083_Sponsors.resx">
+      <DependentUpon>201806200430083_Sponsors.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\Identity\201806190434008_InitialCreateIdentity.resx">
       <DependentUpon>201806190434008_InitialCreateIdentity.cs</DependentUpon>
