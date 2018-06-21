@@ -42,13 +42,25 @@ namespace TIQRI.Devday.Controllers
             return Json(!sizesArr.Any(s => s.Size == size), JsonRequestBehavior.AllowGet);
         }
 
-        //For check both at a time .mailid and empName.   
-        // [HttpGet]
-        // public JsonResult IsNameandMailExist(string firstName, string lastName, string email)
-        //   {
+        //To check only tshirt size   
+        [HttpGet]
+        public JsonResult UserEmailExists(string userEmail)
+        {
+            var emailArr = db.Users.ToList();
+            return Json(!emailArr.Any(u => u.UserEmail == userEmail), JsonRequestBehavior.AllowGet);
+        }
 
-        // bool isExist = EmployeeStaticData.UserList.Where(u => u.EmpName.ToLowerInvariant().Equals(Empname.ToLower()) && u.EmpMail.ToLowerInvariant().Equals(EmpMail.ToLower())).FirstOrDefault() != null;
-        //  return Json(!isExist, JsonRequestBehavior.AllowGet);
-        // }
+        //For check both at a time .mailid and first name and lastname.   
+        [HttpGet]
+        public JsonResult IsNameandMailExist(string firstName, string lastName, string userEmail)
+        {
+            bool isExist = db.Users.ToList().Where
+                (u => u.FirstName.ToLowerInvariant().Equals(firstName.ToLower()) && 
+                        u.LastName.ToLowerInvariant().Equals(lastName.ToLower()) &&
+                        u.UserEmail.ToLowerInvariant().Equals(userEmail.ToLower()))
+                        .FirstOrDefault() != null;
+
+            return Json(!isExist, JsonRequestBehavior.AllowGet);
+        }
     }
 }

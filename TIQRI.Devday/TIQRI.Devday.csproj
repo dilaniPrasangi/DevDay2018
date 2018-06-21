@@ -441,11 +441,8 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\DevDay\201806210432461_init.resx">
-      <DependentUpon>201806210432461_init.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\DevDay\201806210435529_sponsor.resx">
-      <DependentUpon>201806210435529_sponsor.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\DevDay\201806190803220_Init_Updates.resx">
+      <DependentUpon>201806190803220_Init_Updates.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\Identity\201806190434008_InitialCreateIdentity.resx">
       <DependentUpon>201806190434008_InitialCreateIdentity.cs</DependentUpon>
