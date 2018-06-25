@@ -19,7 +19,7 @@ namespace TIQRI.Devday.Controllers
         // GET: Sponsors
         public ActionResult Index()
         {
-            return View(db.Sponsors.ToList());
+            return View(service.GetSponsors(db,false));
         }
 
         // GET: Sponsors/Details/5
@@ -29,7 +29,7 @@ namespace TIQRI.Devday.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Sponsor sponsor = db.Sponsors.Find(id);
+            Sponsor sponsor = service.GetSponsor((int)id,db);
             if (sponsor == null)
             {
                 return HttpNotFound();

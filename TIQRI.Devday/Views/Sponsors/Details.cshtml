@@ -1,8 +1,5 @@
 ﻿@model TIQRI.Devday.Models.ViewModel.Sponsor
 
-@{
-   
-}
 
 <!DOCTYPE html>
 
@@ -23,7 +20,27 @@
             <dd>
                 @Html.DisplayFor(model => model.Name)
             </dd>
-    
+@if (Model.Logo != null)
+{
+            <dt>
+                @Html.DisplayNameFor(model => model.Logo)
+            </dt>
+
+            <dd>
+                <img src="~/Image?id=@Model.Logo.Id" alt="logo" width="200px" height="100px" />
+            </dd>
+}
+@if (Model.Banner != null)
+{
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Banner)
+            </dt>
+
+            <dd>
+                <img src="~/Image?id=@Model.Banner.Id" alt="Banner" width="200px" height="100px" />
+            </dd>
+}
             <dt>
                 @Html.DisplayNameFor(model => model.Type)
             </dt>

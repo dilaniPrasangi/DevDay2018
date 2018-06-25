@@ -214,6 +214,7 @@
     <Compile Include="Controllers\FeedbacksController.cs" />
     <Compile Include="Controllers\FeedbackTypesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ImageController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\SponsorsController.cs" />
     <Compile Include="Controllers\TracksController.cs" />
@@ -225,14 +226,6 @@
     <Compile Include="Data\ExampleData.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\DevDay\201806210432461_init.cs" />
-    <Compile Include="Migrations\DevDay\201806210432461_init.Designer.cs">
-      <DependentUpon>201806210432461_init.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\DevDay\201806210435529_sponsor.cs" />
-    <Compile Include="Migrations\DevDay\201806210435529_sponsor.Designer.cs">
-      <DependentUpon>201806210435529_sponsor.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\DevDay\Configuration.cs" />
     <Compile Include="Migrations\Identity\201806190434008_InitialCreateIdentity.cs" />
@@ -431,6 +424,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Views\Default\" />
     <Folder Include="Views\Event\" />
+    <Folder Include="Views\Image\" />
     <Folder Include="Views\Validation\" />
   </ItemGroup>
   <ItemGroup>
@@ -441,9 +435,6 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\DevDay\201806190803220_Init_Updates.resx">
-      <DependentUpon>201806190803220_Init_Updates.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\Identity\201806190434008_InitialCreateIdentity.resx">
       <DependentUpon>201806190434008_InitialCreateIdentity.cs</DependentUpon>
     </EmbeddedResource>

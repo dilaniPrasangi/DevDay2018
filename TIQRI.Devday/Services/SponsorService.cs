@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -12,17 +13,17 @@ namespace TIQRI.Devday.Services
     {
         public bool CreateSponsor(Sponsor sponsor, HttpPostedFileBase logoFile, AppContext db,HttpPostedFileBase BannerFile)
         {
-            if (logoFile != null)
+            if (logoFile != null && logoFile.ContentLength >0)
             { 
-                Image logo = new Image { ImageContent = ConvertToBytes(logoFile), DateCreated = DateTime.Now, DateLastUpdated = DateTime.Now };
-                sponsor.Logo = db.Images.Add(logo);
+                Image logo = new Image { ImageContent = ConvertToBytes(logoFile),ContentType= logoFile.ContentType,FileName=logoFile.FileName, DateCreated = DateTime.Now, DateLastUpdated = DateTime.Now };
+                sponsor.Logo = logo;
                 
             }
 
-            if (BannerFile != null)
+            if (BannerFile != null && BannerFile.ContentLength >0)
             {
-                Image banner = new Image { ImageContent = ConvertToBytes(BannerFile), DateCreated = DateTime.Now, DateLastUpdated = DateTime.Now };
-                sponsor.Banner = db.Images.Add(banner);
+                Image banner = new Image { ImageContent = ConvertToBytes(BannerFile), ContentType = BannerFile.ContentType, FileName = BannerFile.FileName, DateCreated = DateTime.Now, DateLastUpdated = DateTime.Now };
+                sponsor.Banner = banner;
 
             }
 
@@ -49,6 +50,18 @@ namespace TIQRI.Devday.Services
 
             return imageBytes;
 
+        }
+
+        public Sponsor GetSponsor(int Id, AppContext db)
+        {
+            Sponsor sponsor = db.Sponsors.Include(a => a.Logo).Include(b=>b.Banner).SingleOrDefault(s => s.Id == Id);
+
+            return sponsor;
+        }
+
+        public List<Sponsor> GetSponsors(AppContext db,bool activeOnly)
+        {
+            return db.Sponsors.Include(l => l.Banner).Include(b => b.Logo).Where(s => s.Archived == activeOnly).ToList();
         }
     }
 }
