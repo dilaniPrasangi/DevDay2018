@@ -1,25 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
+﻿using System.Data.Entity;
 using System.Threading.Tasks;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using TIQRI.Devday.Context;
 using TIQRI.Devday.Models.ViewModel;
+using TIQRI.Devday.Services;
 
 namespace TIQRI.Devday.Controllers
 {
     public class FeedbacksController : Controller
     {
-        private AppContext db = new AppContext();
+        private static AppContext db = new AppContext();
+        private FeedbackService feedbackService = new FeedbackService(db); 
 
         // GET: Feedbacks
         public async Task<ActionResult> Index()
         {
-            var feedbacks = db.Feedbacks.Include(f => f.FeedbackQuestion).Include(f => f.FeedbackType).Include(f => f.User);
+            var feedbacks = feedbackService.GetAll();
             return View(await feedbacks.ToListAsync());
         }
 
@@ -30,7 +27,7 @@ namespace TIQRI.Devday.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Feedback feedback = await db.Feedbacks.FindAsync(id);
+            Feedback feedback = await feedbackService.GetFeedbackByIdAsync(id);
             if (feedback == null)
             {
                 return HttpNotFound();
@@ -56,8 +53,7 @@ namespace TIQRI.Devday.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Feedbacks.Add(feedback);
-                await db.SaveChangesAsync();
+                feedbackService.Post(feedback);
                 return RedirectToAction("Index");
             }
 
@@ -74,7 +70,7 @@ namespace TIQRI.Devday.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Feedback feedback = await db.Feedbacks.FindAsync(id);
+            Feedback feedback = await feedbackService.GetFeedbackByIdAsync(id);
             if (feedback == null)
             {
                 return HttpNotFound();
@@ -94,8 +90,7 @@ namespace TIQRI.Devday.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(feedback).State = EntityState.Modified;
-                await db.SaveChangesAsync();
+                feedbackService.Edit(feedback);
                 return RedirectToAction("Index");
             }
             ViewBag.FeedbackQuestionId = new SelectList(db.FeedbackQuestions, "Id", "Question", feedback.FeedbackQuestionId);
@@ -111,7 +106,7 @@ namespace TIQRI.Devday.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Feedback feedback = await db.Feedbacks.FindAsync(id);
+            Feedback feedback = await feedbackService.GetFeedbackByIdAsync(id);
             if (feedback == null)
             {
                 return HttpNotFound();
@@ -124,9 +119,8 @@ namespace TIQRI.Devday.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            Feedback feedback = await db.Feedbacks.FindAsync(id);
-            db.Feedbacks.Remove(feedback);
-            await db.SaveChangesAsync();
+            Feedback feedback = await feedbackService.GetFeedbackByIdAsync(id);
+            feedbackService.Delete(feedback);            
             return RedirectToAction("Index");
         }
 
@@ -134,7 +128,7 @@ namespace TIQRI.Devday.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                feedbackService.Dispose();
             }
             base.Dispose(disposing);
         }
