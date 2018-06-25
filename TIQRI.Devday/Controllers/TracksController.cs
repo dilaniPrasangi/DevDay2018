@@ -9,17 +9,19 @@ using System.Web;
 using System.Web.Mvc;
 using TIQRI.Devday.Context;
 using TIQRI.Devday.Models.ViewModel;
+using TIQRI.Devday.Services;
 
 namespace TIQRI.Devday.Controllers
 {
     public class TracksController : Controller
     {
-        private AppContext db = new AppContext();
+        private static AppContext db = new AppContext();
+        private TrackService trackService = new TrackService(db);
 
         // GET: Tracks
         public async Task<ActionResult> Index()
         {
-            return View(await db.Tracks.ToListAsync());
+            return View(await trackService.GetAll());
         }
 
         // GET: Tracks/Details/5
@@ -29,7 +31,7 @@ namespace TIQRI.Devday.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Track track = await db.Tracks.FindAsync(id);
+            Track track = await trackService.GetTrackByIdAsync(id);
             if (track == null)
             {
                 return HttpNotFound();
@@ -52,8 +54,7 @@ namespace TIQRI.Devday.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Tracks.Add(track);
-                await db.SaveChangesAsync();
+                trackService.Post(track);
                 return RedirectToAction("Index");
             }
 
@@ -67,7 +68,7 @@ namespace TIQRI.Devday.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Track track = await db.Tracks.FindAsync(id);
+            Track track = await trackService.GetTrackByIdAsync(id);
             if (track == null)
             {
                 return HttpNotFound();
@@ -84,8 +85,7 @@ namespace TIQRI.Devday.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(track).State = EntityState.Modified;
-                await db.SaveChangesAsync();
+                trackService.Edit(track);
                 return RedirectToAction("Index");
             }
             return View(track);
@@ -98,7 +98,7 @@ namespace TIQRI.Devday.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Track track = await db.Tracks.FindAsync(id);
+            Track track = await trackService.GetTrackByIdAsync(id);
             if (track == null)
             {
                 return HttpNotFound();
@@ -111,9 +111,8 @@ namespace TIQRI.Devday.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            Track track = await db.Tracks.FindAsync(id);
-            db.Tracks.Remove(track);
-            await db.SaveChangesAsync();
+            Track track = await trackService.GetTrackByIdAsync(id);
+            trackService.Delete(track);
             return RedirectToAction("Index");
         }
 
@@ -121,7 +120,7 @@ namespace TIQRI.Devday.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                trackService.Dispose();
             }
             base.Dispose(disposing);
         }

@@ -9,17 +9,20 @@ using System.Web;
 using System.Web.Mvc;
 using TIQRI.Devday.Context;
 using TIQRI.Devday.Models.ViewModel;
+using TIQRI.Devday.Services;
 
 namespace TIQRI.Devday.Controllers
 {
     public class FeedbackTypesController : Controller
     {
-        private AppContext db = new AppContext();
+        private static AppContext db = new AppContext();
+        private FeedbackTypeService feedbackTypeService = new FeedbackTypeService(db);
+
 
         // GET: FeedbackTypes
         public async Task<ActionResult> Index()
         {
-            return View(await db.FeedbackTypes.ToListAsync());
+            return View(await feedbackTypeService.GetAll());
         }
 
         // GET: FeedbackTypes/Details/5
@@ -29,7 +32,7 @@ namespace TIQRI.Devday.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            FeedbackType feedbackType = await db.FeedbackTypes.FindAsync(id);
+            FeedbackType feedbackType = await feedbackTypeService.GetFeedbackTypeByIdAsync(id);
             if (feedbackType == null)
             {
                 return HttpNotFound();
@@ -52,8 +55,7 @@ namespace TIQRI.Devday.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.FeedbackTypes.Add(feedbackType);
-                await db.SaveChangesAsync();
+                feedbackTypeService.Post(feedbackType);
                 return RedirectToAction("Index");
             }
 
@@ -67,7 +69,7 @@ namespace TIQRI.Devday.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            FeedbackType feedbackType = await db.FeedbackTypes.FindAsync(id);
+            FeedbackType feedbackType = await feedbackTypeService.GetFeedbackTypeByIdAsync(id);
             if (feedbackType == null)
             {
                 return HttpNotFound();
@@ -84,8 +86,7 @@ namespace TIQRI.Devday.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(feedbackType).State = EntityState.Modified;
-                await db.SaveChangesAsync();
+                feedbackTypeService.Edit(feedbackType);
                 return RedirectToAction("Index");
             }
             return View(feedbackType);
@@ -98,7 +99,7 @@ namespace TIQRI.Devday.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            FeedbackType feedbackType = await db.FeedbackTypes.FindAsync(id);
+            FeedbackType feedbackType = await feedbackTypeService.GetFeedbackTypeByIdAsync(id);
             if (feedbackType == null)
             {
                 return HttpNotFound();
@@ -111,9 +112,8 @@ namespace TIQRI.Devday.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            FeedbackType feedbackType = await db.FeedbackTypes.FindAsync(id);
-            db.FeedbackTypes.Remove(feedbackType);
-            await db.SaveChangesAsync();
+            FeedbackType feedbackType = await feedbackTypeService.GetFeedbackTypeByIdAsync(id);
+            feedbackTypeService.Delete(feedbackType);
             return RedirectToAction("Index");
         }
 
@@ -121,7 +121,7 @@ namespace TIQRI.Devday.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                feedbackTypeService.Dispose();
             }
             base.Dispose(disposing);
         }
