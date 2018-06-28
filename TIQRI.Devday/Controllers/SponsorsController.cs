@@ -1,5 +1,6 @@
 ﻿
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -17,9 +18,12 @@ namespace TIQRI.Devday.Controllers
         private SponsorService service = new SponsorService();
         private EventService eventService = new EventService();
         // GET: Sponsors
-        public ActionResult Index()
+        public ActionResult Index(int?id)
         {
-            return View(service.GetSponsors(db,false));
+            
+                return View(service.GetSponsors(db, false,id));
+           
+                
         }
 
         // GET: Sponsors/Details/5
@@ -38,10 +42,10 @@ namespace TIQRI.Devday.Controllers
         }
 
         // GET: Sponsors/Create
-        public ActionResult Create()
+        public ActionResult Create(int?id)
         {
             
-            ViewBag.EventId = new SelectList(eventService.GetActiveEvents(db), "Id", "Name");
+            ViewBag.EventId = new SelectList(eventService.GetActiveEvents(db), "Id", "Name",id);
             return View();
         }
 
@@ -69,7 +73,8 @@ namespace TIQRI.Devday.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Sponsor sponsor = db.Sponsors.Find(id);
+            ViewBag.EventId = new SelectList(eventService.GetActiveEvents(db), "Id", "Name");
+            Sponsor sponsor = service.GetSponsor((int)id, db);
             if (sponsor == null)
             {
                 return HttpNotFound();
@@ -82,15 +87,18 @@ namespace TIQRI.Devday.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Type,Description,ContactNumber,Email,Archived,DateLastUpdated,UserLastUpdated,DateCreated,UserCreated")] Sponsor sponsor)
+        public ActionResult Edit([Bind(Include = "Id,Name,Type,Description,ContactNumber,Email,Archived,EventId")] Sponsor sponsor, HttpPostedFileBase LogoImageData, HttpPostedFileBase BannerImageData)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(sponsor).State = EntityState.Modified;
-                db.SaveChanges();
+                service.EditSponsor(sponsor, LogoImageData, db, BannerImageData);
                 return RedirectToAction("Index");
+
+
             }
             return View(sponsor);
+
+           
         }
 
         // GET: Sponsors/Delete/5
@@ -100,7 +108,7 @@ namespace TIQRI.Devday.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Sponsor sponsor = db.Sponsors.Find(id);
+            Sponsor sponsor = service.GetSponsor((int)id, db);
             if (sponsor == null)
             {
                 return HttpNotFound();
@@ -113,9 +121,7 @@ namespace TIQRI.Devday.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Sponsor sponsor = db.Sponsors.Find(id);
-            db.Sponsors.Remove(sponsor);
-            db.SaveChanges();
+            service.DeleteSponsor(id, db);
             return RedirectToAction("Index");
         }
 

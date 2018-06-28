@@ -227,6 +227,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\DevDay\201806260842275_sponso11r.cs" />
+    <Compile Include="Migrations\DevDay\201806260842275_sponso11r.Designer.cs">
+      <DependentUpon>201806260842275_sponso11r.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\DevDay\Configuration.cs" />
     <Compile Include="Migrations\Identity\201806190434008_InitialCreateIdentity.cs" />
     <Compile Include="Migrations\Identity\201806190434008_InitialCreateIdentity.Designer.cs">
@@ -439,6 +443,9 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Migrations\DevDay\201806260842275_sponso11r.resx">
+      <DependentUpon>201806260842275_sponso11r.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\Identity\201806190434008_InitialCreateIdentity.resx">
       <DependentUpon>201806190434008_InitialCreateIdentity.cs</DependentUpon>
     </EmbeddedResource>
